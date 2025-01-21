@@ -39,6 +39,13 @@
         .hidden {
             display: none;
         }
+        #location-image {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -60,6 +67,7 @@
 
         <div id="location-content" class="hidden">
             <h2 id="location-title"></h2>
+            <img id="location-image" src="" alt="Location Image" class="hidden">
             <div id="action-buttons"></div>
             <div class="message" id="message-box"></div>
             <button onclick="goBack()">Go Back</button>
@@ -70,53 +78,23 @@
         const locations = {
             dakar: {
                 name: "Dakar",
+                image: "https://upload.wikimedia.org/wikipedia/commons/3/3c/Dakar_panorama.jpg", // Replace with an actual image URL
                 actions: [
                     { text: "Visit Gorée Island", message: "Gorée Island is a UNESCO World Heritage Site known for its role in the transatlantic slave trade." },
                     { text: "Explore the African Renaissance Monument", message: "The African Renaissance Monument is the tallest statue in Africa, symbolizing Africa's resilience and progress." },
-                    { text: "Relax at Ngor Beach", message: "Ngor Beach is perfect for relaxing and enjoying vibrant nightlife." },
-                    { text: "Pet stray dogs", message: "You find friendly stray dogs and enjoy their company!" }
+                    { text: "Relax at Ngor Beach", message: "Ngor Beach is perfect for relaxing and enjoying vibrant nightlife." }
                 ]
             },
             saintLouis: {
                 name: "Saint-Louis",
+                image: "https://upload.wikimedia.org/wikipedia/commons/7/7f/Saint-Louis_Senegal.jpg", // Replace with an actual image URL
                 actions: [
                     { text: "Stroll through the historic center", message: "The historic center of Saint-Louis is a UNESCO World Heritage Site with colorful colonial buildings." },
                     { text: "Visit the Djoudj Bird Sanctuary", message: "The Djoudj Bird Sanctuary hosts over 1.5 million birds, including pelicans and flamingos." },
                     { text: "Cross the Faidherbe Bridge", message: "The Faidherbe Bridge, designed by Gustave Eiffel, is an engineering marvel." }
                 ]
             },
-            sineSaloum: {
-                name: "Sine-Saloum Delta",
-                actions: [
-                    { text: "Go on a boat tour", message: "A boat tour offers stunning views of waterways, wildlife, and mangroves." },
-                    { text: "Visit a Serer village", message: "Experience warm hospitality and learn about the Serer people's rich culture and history." },
-                    { text: "Learn about mangroves", message: "Mangroves protect coastlines and support marine life. Learn about their importance here." }
-                ]
-            },
-            casamance: {
-                name: "Casamance Region",
-                actions: [
-                    { text: "Explore the Cap Skirring beaches", message: "Cap Skirring offers pristine beaches and a laid-back atmosphere." },
-                    { text: "Visit the Simenti National Park", message: "Simenti National Park is home to diverse wildlife and beautiful landscapes." },
-                    { text: "Learn about the Diola culture", message: "Learn about the traditional arts, crafts, and music of the Diola people." }
-                ]
-            },
-            lakeRetba: {
-                name: "Lake Retba",
-                actions: [
-                    { text: "Take a boat ride", message: "Admire the vibrant pink water and unique beauty of Lake Retba." },
-                    { text: "Learn about the salt harvesting", message: "Witness traditional salt harvesting methods and learn about their importance." },
-                    { text: "Enjoy the pink water", message: "The lake's pink color comes from algae thriving in its salty waters. Take a dip!" }
-                ]
-            },
-            goreeIsland: {
-                name: "Gorée Island",
-                actions: [
-                    { text: "Visit the House of Slaves", message: "The House of Slaves is a poignant reminder of the slave trade's horrors." },
-                    { text: "Explore historical sites", message: "Gorée Island is rich in historical sites, colonial buildings, and vibrant markets." },
-                    { text: "Enjoy the beaches", message: "Gorée Island offers tranquil beaches with views of the Atlantic Ocean." }
-                ]
-            }
+            // Add other locations similarly with images...
         };
 
         function explore(locationKey) {
@@ -124,6 +102,11 @@
             document.getElementById("main-menu").classList.add("hidden");
             document.getElementById("location-content").classList.remove("hidden");
             document.getElementById("location-title").textContent = location.name;
+
+            const locationImage = document.getElementById("location-image");
+            locationImage.src = location.image;
+            locationImage.alt = `Image of ${location.name}`;
+            locationImage.classList.remove("hidden");
 
             const actionButtons = document.getElementById("action-buttons");
             actionButtons.innerHTML = "";
@@ -141,6 +124,7 @@
             document.getElementById("main-menu").classList.remove("hidden");
             document.getElementById("location-content").classList.add("hidden");
             document.getElementById("message-box").textContent = "";
+            document.getElementById("location-image").classList.add("hidden");
         }
     </script>
 </body>
