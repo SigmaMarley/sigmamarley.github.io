@@ -6,193 +6,70 @@
     <title>Senegal Adventure Game</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #e0f7fa;
+            background-color: #f4f4f9;
             color: #333;
         }
         .container {
             padding: 20px;
-            max-width: 900px;
-            margin: 40px auto;
-            background-color: #ffffff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
+            max-width: 800px;
+            margin: auto;
         }
-        h1 {
+        h1, h2 {
             text-align: center;
-            color: #00796b;
         }
-        h2 {
-            text-align: center;
-            color: #004d40;
+        .location, .action, .message {
+            margin-bottom: 20px;
         }
-        p {
-            text-align: center;
-            font-size: 1.2em;
-            color: #555;
-        }
-        #locations button {
-            display: inline-block;
-            padding: 10px 20px;
-            margin: 10px;
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
             font-size: 16px;
-            background-color: #00796b;
+            background-color: #4caf50;
             color: white;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s;
         }
-        #locations button:hover {
-            background-color: #004d40;
+        button:hover {
+            background-color: #45a049;
         }
         .hidden {
             display: none;
         }
         #location-image {
             width: 100%;
-            max-height: 400px;
+            max-height: 300px;
             object-fit: cover;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
-        #action-buttons button {
-            display: block;
-            padding: 10px;
-            margin: 10px 0;
-            font-size: 16px;
-            background-color: #00897b;
-            color: white;
-            border: none;
+            margin-bottom: 15px;
             border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        #action-buttons button:hover {
-            background-color: #00695c;
-        }
-        #message-box {
-            margin: 20px 0;
-            font-size: 1.1em;
-            color: #004d40;
-            text-align: center;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Welcome to the Senegal Adventure Game!</h1>
-        <p>Embark on a journey to discover the beauty, culture, and history of Senegal. Choose a destination to start your adventure!</p>
+        <p>Explore fascinating locations in Senegal and learn fun facts along the way. Click your choices to proceed and enjoy the journey!</p>
 
         <div id="main-menu">
-            <h2>Choose Your Destination</h2>
+            <h2>Where would you like to go?</h2>
             <div id="locations">
-                <button onclick="explore('dakar')">Dakar</button>
-                <button onclick="explore('saintLouis')">Saint-Louis</button>
-                <button onclick="explore('sineSaloum')">Sine-Saloum Delta</button>
-                <button onclick="explore('casamance')">Casamance Region</button>
-                <button onclick="explore('lakeRetba')">Lake Retba</button>
-                <button onclick="explore('goreeIsland')">Gorée Island</button>
+                <button onclick="navigateTo('dakar.html')">Dakar</button>
+                <button onclick="navigateTo('saintLouis.html')">Saint-Louis</button>
+                <button onclick="navigateTo('sineSaloum.html')">Sine-Saloum Delta</button>
+                <button onclick="navigateTo('casamance.html')">Casamance Region</button>
+                <button onclick="navigateTo('lakeRetba.html')">Lake Retba</button>
+                <button onclick="navigateTo('goreeIsland.html')">Gorée Island</button>
             </div>
-        </div>
-
-        <div id="location-content" class="hidden">
-            <h2 id="location-title"></h2>
-            <img id="location-image" src="" alt="Location Image" class="hidden">
-            <div id="action-buttons"></div>
-            <div id="message-box"></div>
-            <button onclick="goBack()">Go Back</button>
         </div>
     </div>
 
     <script>
-        const locations = {
-            dakar: {
-                name: "Dakar",
-                image: "https://example.com/dakar.jpg",
-                actions: [
-                    { text: "Visit Gorée Island", message: "Gorée is a tiny, car-free island off the coast of Dakar, in Senegal. It’s known for its role in the 15th- to 19th-century Atlantic slave trade. On the narrow streets, colonial buildings include the House of Slaves." },
-                    { text: "Explore the African Renaissance Monument", message: "This monument symbolizes Africa's progress and resilience." },
-                    { text: "Relax at Ngor Beach", message: "Ngor Beach is perfect for a mix of relaxation and vibrant nightlife." }
-                ]
-            },
-            saintLouis: {
-                name: "Saint-Louis",
-                image: "https://example.com/saint-louis.jpg",
-                actions: [
-                    { text: "Explore the Historic Center", message: "A UNESCO World Heritage Site, showcasing colorful colonial-era architecture." },
-                    { text: "Visit Djoudj Bird Sanctuary", message: "An avian paradise with over 1.5 million birds, including pelicans and flamingos." },
-                    { text: "Walk the Faidherbe Bridge", message: "An iconic engineering marvel designed by Gustave Eiffel." }
-                ]
-            },
-            sineSaloum: {
-                name: "Sine-Saloum Delta",
-                image: "https://example.com/sine-saloum.jpg",
-                actions: [
-                    { text: "Discover the Mangroves", message: "A breathtaking region of waterways, mangroves, and rich biodiversity." },
-                    { text: "Meet Local Communities", message: "Experience the warmth and traditions of the Serer people." },
-                    { text: "Bird Watching", message: "Spot rare bird species in this serene delta." }
-                ]
-            },
-            casamance: {
-                name: "Casamance Region",
-                image: "https://example.com/casamance.jpg",
-                actions: [
-                    { text: "Explore Dense Forests", message: "Home to lush landscapes and unique wildlife." },
-                    { text: "Visit Ziguinchor", message: "The vibrant cultural hub of the region." },
-                    { text: "Relax on Cap Skirring Beach", message: "A picturesque beach perfect for unwinding." }
-                ]
-            },
-            lakeRetba: {
-                name: "Lake Retba",
-                image: "https://example.com/lake-retba.jpg",
-                actions: [
-                    { text: "Marvel at the Pink Lake", message: "The lake gets its pink hue from high salt concentration and algae." },
-                    { text: "Salt Harvesting", message: "Learn about traditional salt harvesting methods." },
-                    { text: "Kayak on the Lake", message: "Enjoy the unique experience of kayaking on this natural wonder." }
-                ]
-            },
-            goreeIsland: {
-                name: "Gorée Island",
-                image: "https://example.com/goree-island.jpg",
-                actions: [
-                    { text: "Visit Maison des Esclaves", message: "A powerful reminder of the transatlantic slave trade." },
-                    { text: "Walk the Quiet Streets", message: "Explore peaceful lanes lined with historic buildings." },
-                    { text: "Learn About History", message: "Discover the rich cultural heritage of the island." }
-                ]
-            }
-        };
-
-        function explore(locationKey) {
-            const location = locations[locationKey];
-            document.getElementById("main-menu").classList.add("hidden");
-            document.getElementById("location-content").classList.remove("hidden");
-            document.getElementById("location-title").textContent = location.name;
-
-            const locationImage = document.getElementById("location-image");
-            locationImage.src = location.image;
-            locationImage.alt = `Image of ${location.name}`;
-            locationImage.classList.remove("hidden");
-
-            const actionButtons = document.getElementById("action-buttons");
-            actionButtons.innerHTML = "";
-            location.actions.forEach(action => {
-                const button = document.createElement("button");
-                button.textContent = action.text;
-                button.onclick = () => {
-                    document.getElementById("message-box").textContent = action.message;
-                };
-                actionButtons.appendChild(button);
-            });
-        }
-
-        function goBack() {
-            document.getElementById("main-menu").classList.remove("hidden");
-            document.getElementById("location-content").classList.add("hidden");
-            document.getElementById("message-box").textContent = "";
-            document.getElementById("location-image").classList.add("hidden");
+        function navigateTo(page) {
+            window.location.href = page;
         }
     </script>
 </body>
