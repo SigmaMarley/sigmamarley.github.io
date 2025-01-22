@@ -5,47 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Senegal Adventure Game</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-        }
-        .container {
-            padding: 20px;
-            max-width: 800px;
-            margin: auto;
-        }
-        h1, h2 {
-            text-align: center;
-        }
-        .location, .action, .message {
-            margin-bottom: 20px;
-        }
-        button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            font-size: 16px;
-            background-color: #4caf50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        .hidden {
-            display: none;
-        }
-        #location-image {
-            width: 100%;
-            max-height: 300px;
-            object-fit: cover;
-            margin-bottom: 15px;
-            border-radius: 5px;
-        }
+        /* Your CSS here */
     </style>
 </head>
 <body>
@@ -78,54 +38,51 @@
         const locations = {
             dakar: {
                 name: "Dakar",
-                image: "https://travelsquire.com/ts/wp-content/uploads/2011/06/Dakar-Senegal-e1455036213833.jpg", // Replace with an actual image URL
+                image: "https://example.com/dakar.jpg", // Replace with an actual image URL
                 actions: [
-                    { text: "Visit Gorée Island", message: "Gorée Island is renowned for its role in the transatlantic slave trade. Although its exact involvement is debated, the island serves as a powerful symbol of human resilience and the impact of slavery." },
-                    { text: "Explore the African Renaissance Monument", message: "The African Renaissance Monument is the tallest statue in Africa, symbolizing Africa's resilience and progress." },
-                    { text: "Relax at Ngor Beach", message: "Ngor Beach is perfect for relaxing and enjoying vibrant nightlife." }
-                    { text: "Relax at Ngor Beach", message: "Ngor Beach is perfect for relaxing and enjoying vibrant nightlife." }
-
+                    { text: "Visit Gorée Island", message: "Gorée Island is a UNESCO World Heritage Site." },
+                    { text: "Explore the African Renaissance Monument", message: "The tallest statue in Africa, symbolizing progress." },
+                    { text: "Relax at Ngor Beach", message: "Ngor Beach offers relaxation and vibrant nightlife." }
                 ]
             },
             saintLouis: {
-                name: "Saint-Louis","https://www.google.com/url?sa=i&url=https%3A%2F%2Fafrolegends.com%2F2022%2F11%2F07%2Fwhy-the-name-saint-louis%2F&psig=AOvVaw24loXR3OGKnW-GdlJLQC0L&ust=1737641342064000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOjSufbAiYsDFQAAAAAdAAAAABAE", // Replace with an actual image URL
+                name: "Saint-Louis",
+                image: "https://example.com/saint-louis.jpg", // Replace with an actual image URL
                 actions: [
-                    { text: "Stroll through the historic center", message: "The historic center of Saint-Louis is a UNESCO World Heritage Site with colorful colonial buildings." },
-                    { text: "Visit the Djoudj Bird Sanctuary", message: "The Djoudj Bird Sanctuary hosts over 1.5 million birds, including pelicans and flamingos." },
-                    { text: "Cross the Faidherbe Bridge", message: "The Faidherbe Bridge, designed by Gustave Eiffel, is an engineering marvel." }
+                    { text: "Stroll through the historic center", message: "A UNESCO World Heritage Site with colorful buildings." },
+                    { text: "Visit the Djoudj Bird Sanctuary", message: "Home to over 1.5 million birds." },
+                    { text: "Cross the Faidherbe Bridge", message: "An engineering marvel designed by Gustave Eiffel." }
                 ]
             },
-             sineSaloum: {
-                name: "Sine Saloum",
-                image: "https://travelsquire.com/ts/wp-content/uploads/2011/06/Dakar-Senegal-e1455036213833.jpg", // Replace with an actual image URL
+            sineSaloum: {
+                name: "Sine-Saloum Delta",
+                image: "https://example.com/sine-saloum.jpg", // Replace with an actual image URL
                 actions: [
-                    { text: "Visit Gorée Island", message: "Gorée Island is a UNESCO World Heritage Site known for its role in the transatlantic slave trade." },
-                    { text: "Explore the African Renaissance Monument", message: "The African Renaissance Monument is the tallest statue in Africa, symbolizing Africa's resilience and progress." },
-                    { text: "Relax at Ngor Beach", message: "Ngor Beach is perfect for relaxing and enjoying vibrant nightlife." }
+                    { text: "Discover the delta", message: "A stunning region of waterways and mangroves." }
                 ]
             },
-            Casamance: {
-                name: "Casamance","sigma", // Replace with an actual image URL
+            casamance: {
+                name: "Casamance Region",
+                image: "https://example.com/casamance.jpg", // Replace with an actual image URL
                 actions: [
-                    { text: "Stroll through the historic center", message: "The historic center of Saint-Louis is a UNESCO World Heritage Site with colorful colonial buildings." },
-                    { text: "Visit the Djoudj Bird Sanctuary", message: "The Djoudj Bird Sanctuary hosts over 1.5 million birds, including pelicans and flamingos." },
-                    { text: "Cross the Faidherbe Bridge", message: "The Faidherbe Bridge, designed by Gustave Eiffel, is an engineering marvel." }
+                    { text: "Explore lush forests", message: "Casamance is known for its natural beauty and biodiversity." }
                 ]
-            }, 
-            LakeRetba: {
-                name: "Lake Retba","sigma", // Replace with an actual image URL
+            },
+            lakeRetba: {
+                name: "Lake Retba",
+                image: "https://example.com/lake-retba.jpg", // Replace with an actual image URL
                 actions: [
-                    { text: "Stroll through the historic center", message: "The historic center of Saint-Louis is a UNESCO World Heritage Site with colorful colonial buildings." },
-                    { text: "Visit the Djoudj Bird Sanctuary", message: "The Djoudj Bird Sanctuary hosts over 1.5 million birds, including pelicans and flamingos." },
-                    { text: "Cross the Faidherbe Bridge", message: "The Faidherbe Bridge, designed by Gustave Eiffel, is an engineering marvel." }
+                    { text: "Visit the pink lake", message: "Famous for its pink hue caused by algae." }
                 ]
-             },
-             goreeIsland: {
-                name: "GoreeIsland","sigma", // Replace with an actual image URL
+            },
+            goreeIsland: {
+                name: "Gorée Island",
+                image: "https://example.com/goree-island.jpg", // Replace with an actual image URL
                 actions: [
-                    { text: "Stroll through the historic center", message: "The historic center of Saint-Louis is a UNESCO World Heritage Site with colorful colonial buildings." },
-                    { text: "Visit the Djoudj Bird Sanctuary", message: "The Djoudj Bird Sanctuary hosts over 1.5 million birds, including pelicans and flamingos." },
-                    { text: "Cross the Faidherbe Bridge", message: "The Faidherbe Bridge, designed by Gustave Eiffel, is an engineering marvel." }
+                    { text: "Visit the Maison des Esclaves", message: "A museum commemorating the transatlantic slave trade." }
+                ]
+            }
+        };
 
         function explore(locationKey) {
             const location = locations[locationKey];
