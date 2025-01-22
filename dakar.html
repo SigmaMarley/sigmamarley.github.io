@@ -1,1 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senegal Adventure Game</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e0f7fa;
+            color: #333;
+        }
+        .container {
+            padding: 20px;
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #00796b;
+        }
+        h2 {
+            text-align: center;
+            color: #004d40;
+        }
+        p {
+            text-align: center;
+            font-size: 1.2em;
+            color: #555;
+        }
+        #locations button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            background-color: #00796b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #locations button:hover {
+            background-color: #004d40;
+        }
+        .hidden {
+            display: none;
+        }
+        #location-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        #action-buttons button {
+            display: block;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            background-color: #00897b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #action-buttons button:hover {
+            background-color: #00695c;
+        }
+        #message-box {
+            margin: 20px 0;
+            font-size: 1.1em;
+            color: #004d40;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Senegal Adventure Game!</h1>
+        <p>Embark on a journey to discover the beauty, culture, and history of Senegal. Choose a destination to start your adventure!</p>
 
+        <div id="main-menu">
+            <h2>Choose Your Destination</h2>
+            <div id="location">
+                <button onclick="explore('dakar')">Dakar</button>
+            </div>
+        </div>
+
+        <div id="location-content" class="hidden">
+            <h2 id="location-title"></h2>
+            <img id="location-image" src="" alt="Location Image" class="hidden">
+            <div id="action-buttons"></div>
+            <div id="message-box"></div>
+            <button onclick="goBack()">Go Back</button>
+        </div>
+    </div>
+
+    <script>
+        const locations = {
+            dakar: {
+                name: "Dakar",
+                image: "https://example.com/dakar.jpg",
+                actions: [
+                    { text: "Visit Gorée Island", message: "Gorée is a tiny, car-free island off the coast of Dakar, in Senegal. It’s known for its role in the 15th- to 19th-century Atlantic slave trade. On the narrow streets, colonial buildings include the House of Slaves." },
+                    { text: "Explore the African Renaissance Monument", message: "This monument symbolizes Africa's progress and resilience." },
+                    { text: "Relax at Ngor Beach", message: "Ngor Beach is perfect for a mix of relaxation and vibrant nightlife." }
+                ]
+            }
+        };
+
+        function explore(locationKey) {
+            const location = locations[locationKey];
+            document.getElementById("main-menu").classList.add("hidden");
+            document.getElementById("location-content").classList.remove("hidden");
+            document.getElementById("location-title").textContent = location.name;
+
+            const locationImage = document.getElementById("location-image");
+            locationImage.src = location.image;
+            locationImage.alt = Image of ${location.name};
+            locationImage.classList.remove("hidden");
+
+            const actionButtons = document.getElementById("action-buttons");
+            actionButtons.innerHTML = "";
+            location.actions.forEach(action => {
+                const button = document.createElement("button");
+                button.textContent = action.text;
+                button.onclick = () => {
+                    document.getElementById("message-box").textContent = action.message;
+                };
+                actionButtons.appendChild(button);
+            });
+        }
+
+        function goBack() {
+            document.getElementById("main-menu").classList.remove("hidden");
+            document.getElementById("location-content").classList.add("hidden");
+            document.getElementById("message-box").textContent = "";
+            document.getElementById("location-image").classList.add("hidden");
+        }
+    </script>
+</body>
+</html>
