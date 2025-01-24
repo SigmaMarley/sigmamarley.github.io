@@ -6,19 +6,35 @@
     <title>Senegal Adventure</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
+            background-color: #e8f0fe;
             color: #333;
+            line-height: 1.6;
         }
         .container {
             padding: 20px;
             max-width: 800px;
             margin: auto;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        h1, h2 {
+        h1 {
             text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        p {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #555;
+        }
+        h2 {
+            text-align: center;
+            color: #34495e;
+            margin-bottom: 20px;
         }
         .location, .action, .message {
             margin-bottom: 20px;
@@ -26,16 +42,18 @@
         button {
             display: block;
             width: 100%;
-            padding: 10px;
-            margin: 5px 0;
+            padding: 12px;
+            margin: 10px 0;
             font-size: 16px;
-            background-color: #4caf50;
+            background: #3498db;
             color: white;
             border: none;
+            border-radius: 5px;
             cursor: pointer;
+            transition: background 0.3s ease;
         }
         button:hover {
-            background-color: #45a049;
+            background: #2980b9;
         }
         .hidden {
             display: none;
@@ -47,12 +65,18 @@
             margin-bottom: 15px;
             border-radius: 5px;
         }
+        @media (max-width: 600px) {
+            button {
+                font-size: 14px;
+                padding: 10px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Welcome to the Senegal Adventure!</h1>
-        <p>Explore fascinating locations in Senegal and learn fun facts along the way. Click your choices to proceed and enjoy the journey! (also i coded this website myself with the help of my freind Oluwadare so it may be glichy-marley C)</p>
+        <p>Explore fascinating locations in Senegal and learn fun facts along the way. Click your choices to proceed and enjoy the journey! (also I coded this website myself with the help of my friend Oluwadare so it may be glitchy - Marley C)</p>
 
         <div id="main-menu">
             <h2>Where would you like to go?</h2>
